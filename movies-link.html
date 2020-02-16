@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width">
+<script src="Sites Create\angular js\resources\jquery.js"></script>
+
+<script>
+i=0;
+movie="";
+movieList=[
+];
+
+
+</script>
+</head>
+<body>
+Current Movie:<input type="label" id="currMov">
+<br/><input type="button" value="Next Movie" onclick="fetchNext()">
+
+<script>
+function fetchNext(){
+  if(i==0){
+  movie=movieList[i];
+  i++
+  }else{
+  console.log("\nFetched: "+movie);
+  movie=movieList[i];
+  i++;
+  }
+  
+  document.getElementById("currMov").value=movie;
+  
+  //var $temp = $("<input>");
+  //$("body").append($temp);
+  //$temp.val(movie).select();
+  //document.execCommand("copy");
+  //$temp.remove();
+  window.open("https://www.google.co.in/search?q="+movie);
+  
+
+}
+</script>
+</body>
+</html>
