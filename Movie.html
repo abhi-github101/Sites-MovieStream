@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Movies Streaming Service">
   <meta name="author" content="Abhijeet Singh">
-  <link rel="icon" href="resources/favicon.jpg">
+  <link rel="icon" href="static/images/favicon.jpg">
 
   <title>Movie Stream</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="resources/bootstrap.min.css" rel="stylesheet">
+  <link href="static/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="resources/blog.css" rel="stylesheet">
-  <link href="resources/carousel.css" rel="stylesheet">
-  <link href="resources/album.css" rel="stylesheet">
+  <link href="static/css/blog.css" rel="stylesheet">
+  <link href="static/css/carousel.css" rel="stylesheet">
+  <link href="static/css/album.css" rel="stylesheet">
 
   <style id="style-1-cropbar-clipper">
     /* Copyright 2014 Evernote Corporation. All rights reserved. */
@@ -174,7 +174,7 @@
             <input id="search" class="form-control mr-sm-2" data-multiple type="text" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>-->
-        <img src="resources/ic_search_white.png" onclick="showSearchModal()" style="cursor:pointer">
+        <img src="static/images/ic_search_white.png" onclick="showSearchModal()" style="cursor:pointer">
       </div>
     </nav>
   </header>
@@ -242,14 +242,14 @@
   <!-- Bootstrap core JavaScript
     ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-  <script src="resources/jquery.min.js"></script>
-  <script src="resources/jquery-3.2.1.slim.min.js"></script>
-  <script src="resources/jquery.js"></script>
-  <script>window.jQuery || document.write('<script src="resources/jquery-slim.min.js"><\/script>')</script>
-  <script src="resources/popper.min.js"></script>
-  <script src="resources/bootstrap.min.js"></script>
-  <script src="resources/holder.min.js"></script>
-  <script src="resources/content.js"></script>
+  <script src="static/js/jquery.min.js"></script>
+  <script src="static/js/jquery-3.2.1.slim.min.js"></script>
+  <script src="static/js/jquery.js"></script>
+  <script>window.jQuery || document.write('<script src="static/js/jquery-slim.min.js"><\/script>')</script>
+  <script src="static/js/popper.min.js"></script>
+  <script src="static/js/bootstrap.min.js"></script>
+  <script src="static/js/holder.min.js"></script>
+  <script src="static/js/content.js"></script>
 
   <script>
     Holder.addTheme('thumb', {
@@ -280,7 +280,7 @@
           break;
         }
       }
-      var container_content = '<div class="row"><div class="col-md-3"><div class="card mb-4 box-shadow"><img class="card-img-top" style="height: 330px; width: 100%; display: block;" src="resources/Posters/' + movieContent[j].title + ' (' + movieContent[j].year + ').jpg" data-holder-rendered="true"><div class="card-body"><div class="d-flex justify-content-between align-items-center"><div class="btn-group">';
+      var container_content = '<div class="row"><div class="col-md-3"><div class="card mb-4 box-shadow"><img class="card-img-top" style="height: 330px; width: 100%; display: block;" src="static/images/posters/' + movieContent[j].title + ' (' + movieContent[j].year + ').jpg" data-holder-rendered="true"><div class="card-body"><div class="d-flex justify-content-between align-items-center"><div class="btn-group">';
       if (isFavorite(movieContent[j].mid)) {
         container_content += '<button type="button" class="btn btn-sm btn-outline-danger" disabled>Favorite</button>';
       } else {
@@ -321,9 +321,9 @@
           container_content += '<button type="button" class="btn btn-sm btn-outline-secondary" onclick=loadGenrePage("' + g[v] + '")>' + g[v] + '</button>';
         }
       }
-      container_content += '</div></div><div class="card-body d-flex flex-column align-items-start col-md-3" align="right"><div class="btn-group"><button type="button" id="availableBtn" class="btn btn-sm btn-outline-info" style="cursor:default" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="Checking Availability">Loading...</button></div></div></div></div><div class="row"><div class="card flex-md-row mb-4 box-shadow h-md-280 col-md-12"><div class="card-body d-flex flex-column align-items-start col-md-9"><div class="btn-group">';
+      container_content += '</div></div><div class="card-body d-flex flex-column align-items-end col-md-3"><div class="btn-group"><button type="button" id="availableBtn" class="btn btn-sm btn-outline-info" style="cursor:default" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="Checking Availability">Loading...</button></div></div></div></div><div class="row"><div class="card flex-md-row mb-4 box-shadow h-md-280 col-md-12"><div class="card-body d-flex flex-column align-items-start col-md-9"><div class="btn-group">';
       container_content += '<button type="button" class="btn btn-sm btn-outline-warning" disabled style="cursor:default">Duration: ' + movieContent[j].duration + '</button>';
-      container_content += '</div></div><div class="card-body d-flex flex-column align-items-start col-md-3" align="right"><div class="btn-group" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="Available in HD">';
+      container_content += '</div></div><div class="card-body d-flex flex-column align-items-end col-md-3"><div class="btn-group" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="Available in HD">';
       if (movieContent[j].hd == "Y") {
         container_content += '<button type="button" class="btn btn-sm btn-outline-primary" style="cursor:default;font-style:italic">HD</button>';
       }
@@ -337,9 +337,9 @@
       document.getElementById("video1").poster = "";
       document.getElementById("video_src").src = path + movieContent[j].path;
       document.getElementById("video1").load();
-      
+
       setTimeout(function () { setVideoContent(j); }, 1000);
-      
+
       return container_content;
     }
 
@@ -419,6 +419,8 @@
       document.getElementById("video1").style.cursor = "default";
       setTimeout(function () { document.getElementById("video1").style.cursor = "none"; }, 3000);
     }
+
+	//https://preview.themeforest.net/item/vodi-video-wordpress-theme-for-movies-tv-shows/full_screen_preview/23738703
 
   </script>
 
