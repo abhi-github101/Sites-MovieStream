@@ -99,6 +99,42 @@
     .popGenre:hover {
       color: #007bff;
     }
+
+    .card-img-top {
+      height: 485px;
+      width: 100%;
+    }
+
+    .col-md-9 .row {
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+
+    .card-body.align-items-start,
+    .card-body.align-items-end {
+      align-items: center !important;
+    }
+
+    @media (min-width: 576px) {}
+
+    @media (min-width: 768px) {}
+
+    @media (min-width: 992px) {
+      .card-img-top {
+        height: 330px;
+        width: 100%;
+      }
+
+      .card-body.align-items-start {
+        align-items: flex-start !important;
+      }
+
+      .card-body.align-items-end {
+        align-items: flex-end !important;
+      }
+    }
+
+    @media (min-width: 1200px) {}
   </style>
 </head>
 
@@ -280,7 +316,7 @@
           break;
         }
       }
-      var container_content = '<div class="row"><div class="col-md-3"><div class="card mb-4 box-shadow"><img class="card-img-top" style="height: 330px; width: 100%; display: block;" src="static/images/posters/' + movieContent[j].title + ' (' + movieContent[j].year + ').jpg" data-holder-rendered="true"><div class="card-body"><div class="d-flex justify-content-between align-items-center"><div class="btn-group">';
+      var container_content = '<div class="row"><div class="col-md-3"><div class="card mb-4 box-shadow"><img class="card-img-top" src="static/images/posters/' + movieContent[j].title + ' (' + movieContent[j].year + ').jpg" data-holder-rendered="true"><div class="card-body"><div class="d-flex justify-content-between align-items-center"><div class="btn-group">';
       if (isFavorite(movieContent[j].mid)) {
         container_content += '<button type="button" class="btn btn-sm btn-outline-danger" disabled>Favorite</button>';
       } else {
@@ -347,6 +383,9 @@
       var d = document.getElementById("video1").duration;
       if (d > 0) {
         document.getElementById("video1").style.height = "589px";
+        if ($(window).width() < 576) {
+          document.getElementById("video1").style.height = "310px";
+        }
         document.getElementById("video1").controls = true;
         $("#availableBtn").removeClass('btn-outline-info');
         $("#availableBtn").html('Available');
