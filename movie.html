@@ -19,73 +19,6 @@
   <link href="static/css/album.css" rel="stylesheet">
 
   <style id="style-1-cropbar-clipper">
-    /* Copyright 2014 Evernote Corporation. All rights reserved. */
-    .en-markup-crop-options {
-      top: 18px !important;
-      left: 50% !important;
-      margin-left: -100px !important;
-      width: 200px !important;
-      border: 2px rgba(255, 255, 255, .38) solid !important;
-      border-radius: 4px !important;
-    }
-
-    .en-markup-crop-options div div:first-of-type {
-      margin-left: 0px !important;
-    }
-
-    .carousel-lend-poster {
-      position: absolute;
-      left: 0px;
-      margin-top: 20px;
-      z-index: 100;
-      box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.32);
-    }
-
-    .carousel-lside-poster {
-      position: absolute;
-      margin-top: 10px;
-      left: 250px;
-      z-index: 200;
-      box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.32);
-    }
-
-    .carousel-rend-poster {
-      position: absolute;
-      left: 1080px;
-      margin-top: 20px;
-      z-index: 100;
-      box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.32);
-    }
-
-    .carousel-rside-poster {
-      position: absolute;
-      left: 810px;
-      margin-top: 10px;
-      z-index: 200;
-      box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.32);
-    }
-
-    .carousel-center-poster {
-      position: absolute;
-      left: 520px;
-      z-index: 300;
-      box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.32);
-    }
-
-    #pag-btn {
-      color: #007bff;
-      background-color: transparent;
-      background-image: none;
-      border-color: #007bff;
-    }
-
-    #pag-btn:hover {
-      color: #fff;
-      background-color: #007bff;
-      background-image: none;
-      border-color: #007bff;
-    }
-
     .navbar-nav li a {
       cursor: pointer;
     }
@@ -98,6 +31,10 @@
 
     .popGenre:hover {
       color: #007bff;
+    }
+
+    #container {
+      margin-top: 30px;
     }
 
     .card-img-top {
@@ -138,7 +75,7 @@
   </style>
 </head>
 
-<body onload="loadContent()">
+<body>
 
   <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -189,64 +126,24 @@
           </li>
 
         </ul>
-        <!-- <form class="dropdown-menu p-4">
-  <div class="form-group">
-    <label for="exampleDropdownFormEmail2">Email address</label>
-    <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
-  </div>
-  <div class="form-group">
-    <label for="exampleDropdownFormPassword2">Password</label>
-    <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
-  </div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-    <label class="form-check-label" for="dropdownCheck2">
-      Remember me
-    </label>
-  </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
-</form>-->
-        <!--<form class="form-inline mt-2 mt-md-0">
-            <input id="search" class="form-control mr-sm-2" data-multiple type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>-->
         <img src="static/images/ic_search_white.png" onclick="showSearchModal()" style="cursor:pointer">
       </div>
     </nav>
   </header>
-  <div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-top:60px;">
-
-    <!-- Wrapper for slides -->
-    <div id="carousel-holder" class="carousel-inner">
-
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="carousel-control-prev" style="width:5%" href="#myCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" style="width:5%" href="#myCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
 
   <!--Movie Content (2 Card Displays)-->
-  <div id="container" class="container" style="">
+  <div id="container" class="container">
   </div>
-  <div id="videoContainer" class="container" style="">
+  <div id="videoContainer" class="container">
   </div>
-
-  <!--Favorite or Recent Movie Content (4 Card Display)-->
-  <!--<div class="album py-5" style="background-color:#fff">
-        <div id="newContainer" class="container">
-          </div>
-        </div>-->
+  <div class="album" style="background-color:#fff">
+    <div id="seriesContainer" class="container">
+    </div>
+  </div>
 
   <footer class="blog-footer">
     <p>
-      © 2018, Movie Stream
+      © 2020, Movie Stream
     </p>
   </footer>
 
@@ -275,112 +172,177 @@
     </div>
   </div>
 
-  <!-- Bootstrap core JavaScript
-    ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="static/js/jquery.min.js"></script>
+  <!-- SCRIPTS-->
   <script src="static/js/jquery-3.2.1.slim.min.js"></script>
-  <script src="static/js/jquery.js"></script>
-  <script>window.jQuery || document.write('<script src="static/js/jquery-slim.min.js"><\/script>')</script>
   <script src="static/js/popper.min.js"></script>
   <script src="static/js/bootstrap.min.js"></script>
-  <script src="static/js/holder.min.js"></script>
   <script src="static/js/content.js"></script>
-
   <script>
-    Holder.addTheme('thumb', {
-      bg: '#55595c',
-      fg: '#eceeef',
-      text: 'Thumbnail'
+    let fullscreen = false, playing = false;
+    let path = "G:/";  //INTERNAL PATH
+    let externalPath = "J:/Backup/Entertainments/Movies/Hollywood/"; //EXTERNAL PATH
+    let showRestricted = false;
+    $(document).ready(function () {
+      let uri = decodeURI(window.location.href);
+      let movieTitle = uri.substring(uri.indexOf("?movie=") + 7);
+      document.title = movieTitle;
+      loadMovie(movieTitle);
+      $('[data-toggle="popover"]').popover();
+      $('body').click(function (e) {
+        if (e.target.id != "genrePopover") {
+          $('[data-toggle="popover"]').popover('hide');
+        }
+      });
     });
-  </script>
-  <script>
-    var more = 0, newMore = 0, fullscreen = false, playing = false;
-    //var rel_url="C:/Users/ABHI's_IDEAPAD";
-    var rel_url = "F:/Applications Data";
-    var path = "G:/";  //INTERNAL PATH
-    function loadContent() {
-      var uri = decodeURI(window.location.href);
-      var movie = uri.substring(uri.indexOf("?") + 7);
-      document.title = movie;
-      document.getElementById("container").innerHTML = loadMovie(movie);
-      $(function () { $('[data-toggle="popover"]').popover(); });
-    }
 
-    function loadMovie(movie) {
-      var j = 0;
-      var title = movie.substring(0, movie.indexOf("(") - 1);
-      var year = movie.substring(movie.indexOf("(") + 1, movie.indexOf(")"));
-      for (; j < movieContent.length; j++) {
-        if (title == movieContent[j].title && year == movieContent[j].year) {
+    function loadMovie(movieTitle) {
+      let mid, movie = undefined;
+      let title = movieTitle.substring(0, movieTitle.lastIndexOf("(") - 1);
+      let year = movieTitle.substring(movieTitle.lastIndexOf("(") + 1, movieTitle.lastIndexOf(")"));
+
+      for (mid in CONTENT["movies"]) {
+        if (title == CONTENT["movies"][mid]["title"] && year == CONTENT["movies"][mid]["year"]) {
+          if(isRestricted(mid) && !showRestricted){
+            return;
+          }
+          movie = CONTENT["movies"][mid];
           break;
         }
       }
-      var container_content = '<div class="row"><div class="col-md-3"><div class="card mb-4 box-shadow"><img class="card-img-top" src="static/images/posters/' + movieContent[j].title + ' (' + movieContent[j].year + ').jpg" data-holder-rendered="true"><div class="card-body"><div class="d-flex justify-content-between align-items-center"><div class="btn-group">';
-      if (isFavorite(movieContent[j].mid)) {
-        container_content += '<button type="button" class="btn btn-sm btn-outline-danger" disabled>Favorite</button>';
-      } else {
-        container_content += '<button type="button" class="btn btn-sm btn-outline-secondary" disabled>Favorite</button>';
+      if (movie == undefined) {
+        return;
       }
+      let container_content =
+        '<div class="row"> \
+        <div class="col-md-3"> \
+          <div class="card mb-4 box-shadow"> \
+            <img class="card-img-top" src="static/images/posters/' + movie.title + ' (' + movie.year + ').jpg" data-holder-rendered="true"> \
+            <div class="card-body"> \
+              <div class="d-flex justify-content-between align-items-center"> \
+                <div class="btn-group">';
 
-      if (movieContent[j].rated == "R") {
-        container_content += '<button type="button" class="btn btn-sm btn-outline-danger" disabled>' + movieContent[j].rated + '</button></div>';
-      } else if (movieContent[j].rated == "M") {
-        container_content += '<button type="button" class="btn btn-sm btn-outline-warning" disabled>' + movieContent[j].rated + '</button></div>';
-      } else if (movieContent[j].rated == "PG-13" || movieContent[j].rated == "PG" || movieContent[j].rated == "G") {
-        container_content += '<button type="button" class="btn btn-sm btn-outline-info" disabled>' + movieContent[j].rated + '</button></div>';
+      let favoriteClass = "btn-outline-secondary";
+      if (isFavorite(mid)) {
+        favoriteClass = "btn-outline-danger";
       }
-      container_content += '<small class="text-muted">IMDB: ';
-      if (movieContent[j].imdb >= 6.5) {
-        container_content += '<strong class="text-success">' + movieContent[j].imdb + '</strong>';
-      } else if (movieContent[j].imdb < 5) {
-        container_content += '<strong class="text-danger">' + movieContent[j].imdb + '</strong>';
-      } else {
-        container_content += '<strong class="text-muted">' + movieContent[j].imdb + '</strong>';
-      }
-      container_content += '</small></div></div></div></div>';
+      container_content += '<button type="button" class="btn btn-sm ' + favoriteClass + '" disabled>Favorite</button>';
 
-      container_content += '<div class="col-md-9"><div class="row"><div class="card flex-md-row mb-4 box-shadow h-md-280 col-md-12"><div class="card-body d-flex flex-column align-items-start"><h3 class="mb-0"><a class="text-dark" >' + movieContent[j].title + ' (' + movieContent[j].year + ')</a></h3><div class="mb-1 text-muted" style="margin-top:10px"><p class="card-text mb-auto"><b class="text-secondary">Cast:</b> ' + movieContent[j].cast + '</p><p class="card-text mb-auto"><b class="text-secondary">Plot:</b> ' + movieContent[j].plot + '</p></div></div></div></div><div class="row"><div class="card flex-md-row mb-4 box-shadow h-md-280 col-md-12"><div class="card-body d-flex flex-column align-items-start col-md-9"><div class="btn-group" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Genre">';
-      var g = movieContent[j].genre.split(", ");
-      for (var v = 0; v < g.length; v++) {
-        if (g[v] == "Comedy") {
-          container_content += '<button type="button" class="btn btn-sm btn-outline-success" onclick=loadGenrePage("' + g[v] + '")>' + g[v] + '</button>';
-        } else if (g[v] == "Horror" || g[v] == "Thriller" || g[v] == "Crime") {
-          container_content += '<button type="button" class="btn btn-sm btn-outline-danger" onclick=loadGenrePage("' + g[v] + '")>' + g[v] + '</button>';
-        } else if (g[v] == "Biography" || g[v] == "Drama") {
-          container_content += '<button type="button" class="btn btn-sm btn-outline-info" onclick=loadGenrePage("' + g[v] + '")>' + g[v] + '</button>';
-        } else if (g[v] == "Romance") {
-          container_content += '<button type="button" class="btn btn-sm btn-outline-warning" onclick=loadGenrePage("' + g[v] + '")>' + g[v] + '</button>';
-        } else if (g[v] == "Animation") {
-          container_content += '<button type="button" class="btn btn-sm btn-outline-primary" onclick=loadGenrePage("' + g[v] + '")>' + g[v] + '</button>';
-        } else {
-          container_content += '<button type="button" class="btn btn-sm btn-outline-secondary" onclick=loadGenrePage("' + g[v] + '")>' + g[v] + '</button>';
+      let ratingClass = "btn-outline-info";
+      if (movie.rated == "R") {
+        ratingClass = "btn-outline-danger";
+      } else if (movie.rated == "M") {
+        ratingClass = "btn-outline-warning";
+      }
+      container_content += '<button type="button" class="btn btn-sm ' + ratingClass + '" disabled>' + movie.rated + '</button></div>';
+
+      let imdbClass = "text-muted";
+      if (movie.imdb >= 6.5) {
+        imdbClass = "text-success";
+      } else if (movie.imdb < 5) {
+        imdbClass = "text-danger";
+      }
+      container_content += '<small class="text-muted">IMDB: \
+        <strong class="' + imdbClass + '">' + movie.imdb + '</strong> \
+        </small> \
+        </div> \
+        </div> \
+        </div> \
+        </div>';
+
+      container_content += '<div class="col-md-9"> \
+        <div class="row"> \
+          <div class="card flex-md-row mb-4 box-shadow h-md-280 col-md-12"> \
+            <div class="card-body d-flex flex-column align-items-start"> \
+              <h3 class="mb-0"> \
+                <a class="text-dark" >' + movie.title + ' (' + movie.year + ')</a> \
+              </h3> \
+              <div class="mb-1 text-muted" style="margin-top:10px"> \
+                <p class="card-text mb-auto"> \
+                  <b class="text-secondary">Cast:</b> ' + movie.cast + ' \
+                </p> \
+                <p class="card-text mb-auto"> \
+                  <b class="text-secondary">Plot:</b> ' + movie.plot + ' \
+                </p> \
+              </div> \
+            </div> \
+          </div> \
+        </div> \
+        <div class="row"> \
+          <div class="card flex-md-row mb-4 box-shadow h-md-280 col-md-12"> \
+            <div class="card-body d-flex flex-column align-items-start col-md-9"> \
+              <div class="btn-group" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Genre">';
+
+      let genreClass = "";
+      for (let genre of movie.genre.split(", ")) {
+        switch (genre) {
+          case "Comedy":
+            genreClass = "btn-outline-success";
+            break;
+          case "Horror":
+          case "Thriller":
+          case "Crime":
+            genreClass = "btn-outline-danger";
+            break;
+          case "Biography":
+          case "Drama":
+            genreClass = "btn-outline-info";
+            break;
+          case "Romance":
+            genreClass = "btn-outline-warning";
+            break;
+          case "Animation":
+            genreClass = "btn-outline-primary";
+            break;
+          default:
+            genreClass = "btn-outline-secondary";
+            break;
         }
+        container_content += '<button type="button" class="btn btn-sm ' + genreClass + '" onclick=loadGenrePage("' + genre + '")>' + genre + '</button>';
       }
-      container_content += '</div></div><div class="card-body d-flex flex-column align-items-end col-md-3"><div class="btn-group"><button type="button" id="availableBtn" class="btn btn-sm btn-outline-info" style="cursor:default" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="Checking Availability">Loading...</button></div></div></div></div><div class="row"><div class="card flex-md-row mb-4 box-shadow h-md-280 col-md-12"><div class="card-body d-flex flex-column align-items-start col-md-9"><div class="btn-group">';
-      container_content += '<button type="button" class="btn btn-sm btn-outline-warning" disabled style="cursor:default">Duration: ' + movieContent[j].duration + '</button>';
-      container_content += '</div></div><div class="card-body d-flex flex-column align-items-end col-md-3"><div class="btn-group" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="Available in HD">';
-      if (movieContent[j].hd == "Y") {
+
+      container_content += '</div></div> \
+      <div class="card-body d-flex flex-column align-items-end col-md-3"> \
+        <div class="btn-group"> \
+          <button type="button" id="availableBtn" class="btn btn-sm btn-outline-info" style="cursor:default" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="Checking Availability">Loading...</button> \
+        </div> \
+      </div> \
+      </div> \
+      </div> \
+      <div class="row"> \
+        <div class="card flex-md-row mb-4 box-shadow h-md-280 col-md-12"> \
+          <div class="card-body d-flex flex-column align-items-start col-md-9"> \
+            <div class="btn-group"> \
+              <button type="button" class="btn btn-sm btn-outline-warning" disabled style="cursor:default">Duration: ' + movie.duration + ' \
+              </button> \
+            </div> \
+          </div> \
+          <div class="card-body d-flex flex-column align-items-end col-md-3"> \
+            <div class="btn-group" data-toggle="popover" data-trigger="hover" data-placement="left" data-content="Available in HD">';
+
+      if (movie.hd == "Y") {
         container_content += '<button type="button" class="btn btn-sm btn-outline-primary" style="cursor:default;font-style:italic">HD</button>';
       }
       container_content += '</div></div></div></div></div></div>';
 
-      if (movieContent[j].local == "N") {
-        path = "J:/Backup/Entertainments/Movies/Hollywood/";    //EXTERNAL PATH
-      }
+      document.getElementById("container").innerHTML = container_content;
 
-      document.getElementById("videoContainer").innerHTML = '<video id="video1" disabled width="100%" height="0px" style="background-color:#000;cursor:none;margin-bottom:20px" onclick="play()" ondblclick="toggleFullScreen()" onmousemove="showCursor()"><source id="video_src" src="" type="video/mp4"></video>';
+      if (movie.local == "N") {
+        path = externalPath;
+      }
+      document.getElementById("videoContainer").innerHTML =
+        '<video id="video1" disabled width="100%" height="0px" style="background-color:#000;cursor:none;margin-bottom:20px" onclick="play()" ondblclick="toggleFullScreen()" onmousemove="showCursor()"> \
+          <source id="video_src" src="" type="video/mp4"> \
+        </video>';
       document.getElementById("video1").poster = "";
-      document.getElementById("video_src").src = path + movieContent[j].path;
+      document.getElementById("video_src").src = path + movie.path;
       document.getElementById("video1").load();
 
-      setTimeout(function () { setVideoContent(j); }, 1000);
-
-      return container_content;
+      setTimeout(function () { setVideoContent(movie); }, 1000);
+      showSeries(mid);
     }
 
-    function setVideoContent(j) {
-      var d = document.getElementById("video1").duration;
+    function setVideoContent(movie) {
+      let d = document.getElementById("video1").duration;
       if (d > 0) {
         document.getElementById("video1").style.height = "589px";
         if ($(window).width() < 576) {
@@ -391,7 +353,7 @@
         $("#availableBtn").html('Available');
         $("#availableBtn").addClass('btn-outline-success');
 
-        if (movieContent[j].local == "N") {
+        if (movie.local == "N") {
           $('#availableBtn').attr('data-content', 'Playing from External Drive');
         } else {
           $('#availableBtn').attr('data-content', 'Available on Local System');
@@ -402,12 +364,11 @@
         $("#availableBtn").html('Unavailable');
         $("#availableBtn").addClass('btn-outline-danger');
 
-        if (movieContent[j].path != "n/a" && movieContent[j].local == "N") {
+        if (movie.path != "n/a" && movie.local == "N") {
           $('#availableBtn').attr('data-content', 'Stored on External Drive');
         } else {
           $("#availableBtn").html('Missing');
           $('#availableBtn').attr('data-content', 'Not Available in any System');
-
         }
       }
     }
@@ -415,36 +376,36 @@
     function loadGenrePage(genre) {
       location.href = "index.html?genre=" + genre.toUpperCase();
     }
+
     function isFavorite(mid) {
-      for (var i = 0; i < favoriteMovies.length; i++) {
-        if (favoriteMovies[i] == mid) {
-          return true;
-        }
+      if (CONTENT["favorites"].indexOf(mid) > -1) {
+        return true;
       }
       return false;
     }
 
-    $('body').click(function (e) {
-      if (e.target.id != "genrePopover") {
-        $('[data-toggle="popover"]').popover('hide');
+    function isRestricted(mid) {
+      if (CONTENT["restricted"].indexOf(mid) > -1) {
+        return true;
       }
-    });
+      return false;
+    }
 
     function play() {
-      var video = document.getElementById("video1");
+      let video = document.getElementById("video1");
       if (video.paused) {
         $(video).trigger('play');
-        console.log("play");
+        // console.log("play");
         playing = true;
       } else {
         $(video).trigger('pause');
-        console.log("pause");
+        // console.log("pause");
         playing = false;
       }
     }
 
     function toggleFullScreen() {
-      var video = document.getElementById("video1");
+      let video = document.getElementById("video1");
       if (!fullscreen) {
         video.webkitRequestFullscreen();
         fullscreen = true;
@@ -452,13 +413,114 @@
         video.webkitExitFullscreen();
         fullscreen = false;
       }
-
     }
+
     function showCursor() {
       document.getElementById("video1").style.cursor = "default";
       setTimeout(function () { document.getElementById("video1").style.cursor = "none"; }, 3000);
     }
 
+    function showSeries(mid) {
+      if (mid in CONTENT["series"]) {
+        let name = CONTENT["series"][mid]["series"];
+        let mids = [];
+        let s;
+        for (s in CONTENT["series"]) {
+          if (name == CONTENT["series"][s]["series"] && s != mid) {
+            if(isRestricted(s) && !showRestricted){
+              continue;
+            }
+            mids.push(s);
+          }
+        }
+        if (mids.length > 0) {
+          mids.sort((a, b) => {
+            if (CONTENT["movies"][a]["year"] > CONTENT["movies"][b]["year"]) {
+              return -1;
+            } else if (CONTENT["movies"][a]["year"] < CONTENT["movies"][b]["year"]) {
+              return 1;
+            } else {
+              if (CONTENT["movies"][a]["imdb"] > CONTENT["movies"][b]["imdb"]) {
+                return -1;
+              } else if (CONTENT["movies"][a]["imdb"] < CONTENT["movies"][b]["imdb"]) {
+                return 1;
+              } else {
+                return 0;
+              }
+            }
+          }
+          );
+          seriesContent(name, mids);
+        }
+      }
+    }
+
+    function seriesContent(name, mids) {
+
+      let container_content =
+        '<div class="jumbotron p-3 p-md-5 text-white rounded" style="background:url(static/images/yellow-band.jpg);margin-bottom:30px"> \
+          <div class="col-md-6 px-0"> \
+            <h1 class="display-4 font-italic">'+ name + '</h1> \
+            <h5 class="">COLLECTION</h5> \
+          </div> \
+        </div>';
+
+      let i = 0;
+      let movie, favoriteClass, ratingClass, imdbClass;
+      let mid;
+      for (mid of mids) {
+        movie = CONTENT["movies"][mid];
+        if (i % 4 == 0) {
+          container_content += '<div class="row">';
+        }
+
+        container_content +=
+          '<div class="col-md-3"> \
+                <div class="card mb-4 box-shadow"> \
+                  <a target="blank" href="movie.html?movie=' + movie.title + ' (' + movie.year + ')"> \
+                    <img class="card-img-top" src="static/images/posters/' + movie.title + ' (' + movie.year + ').jpg" data-holder-rendered="true" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="' + movie.title + ' (' + movie.year + ')"> \
+                  </a> \
+                <div class="card-body"> \
+                  <p class="card-text">Year: ' + movie.year + '<br/>Genre: ' + movie.genre + '<br/><strong class="text-muted">Cast:</strong> ' + movie.cast + ' \
+                  </p> \
+                  <div class="d-flex justify-content-between align-items-center"> \
+                    <div class="btn-group">';
+
+        favoriteClass = "btn-outline-secondary";
+        if (isFavorite(mid)) {
+          favoriteClass = "btn-outline-danger";
+        }
+        container_content += '<button type="button" class="btn btn-sm ' + favoriteClass + '" disabled>Favorite</button>';
+
+        ratingClass = "btn-outline-info";
+        if (movie.rated == "R") {
+          ratingClass = "btn-outline-danger";
+        } else if (movie.rated == "M") {
+          ratingClass = "btn-outline-warning";
+        }
+        container_content += '<button type="button" class="btn btn-sm ' + ratingClass + '" disabled>' + movie.rated + '</button></div>';
+
+        imdbClass = "text-muted";
+        if (movie.imdb >= 6.5) {
+          imdbClass = "text-success";
+        } else if (movie.imdb < 5) {
+          imdbClass = "text-danger";
+        }
+        container_content +=
+          '<small class="text-muted">IMDB: <strong class="' + imdbClass + '">' + movie.imdb + '</strong></small> \
+              </div></div></div></div>';
+
+        if (i % 4 == 3) {
+          container_content += '</div>';
+        }
+        i += 1;
+      }
+      if (i % 4 !== 0) {
+        container_content += '</div>';
+      }
+
+      document.getElementById("seriesContainer").innerHTML = container_content;
+    }
 	//https://preview.themeforest.net/item/vodi-video-wordpress-theme-for-movies-tv-shows/full_screen_preview/23738703
 
   </script>

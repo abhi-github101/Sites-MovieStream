@@ -224,19 +224,19 @@
     </style>
 </head>
 
-<body onload="loadPage()">
+<body>
 
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="index.html?genre=NEW">Movie Stream</a>
+            <a class="navbar-brand" href="index.html">Movie Stream</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.html?genre=NEW">HOME <span class="sr-only">(current)</span></a>
-                    </li>
+                    <!-- <li class="nav-item active">
+                        <a class="nav-link" href="index.html">HOME <span class="sr-only">(current)</span></a>
+                    </li> -->
                     <li id="nav-genre" class="nav-item">
                         <a id="genrePopover" class="nav-link" data-container="body" data-toggle="popover" title="Genres"
                             data-html="true" data-placement="bottom"
@@ -275,27 +275,6 @@
                     </li>
 
                 </ul>
-                <!-- <form class="dropdown-menu p-4">
-  <div class="form-group">
-    <label for="exampleDropdownFormEmail2">Email address</label>
-    <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
-  </div>
-  <div class="form-group">
-    <label for="exampleDropdownFormPassword2">Password</label>
-    <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
-  </div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-    <label class="form-check-label" for="dropdownCheck2">
-      Remember me
-    </label>
-  </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
-</form>-->
-                <!--<form class="form-inline mt-2 mt-md-0">
-            <input id="searchText" class="form-control mr-sm-2" placeholder="Search Movies" onkeyup="searchMovies(event)">
-            <button class="btn btn-outline-success my-2 my-sm-0" onclick()="searchMovies(event)">Search</button>
-          </form>-->
                 <img src="static/images/ic_search_white.png" onclick="showSearchModal()" style="cursor:pointer">
             </div>
         </nav>
@@ -319,7 +298,7 @@
     </div>
 
     <!--Movie Content (2 Card Displays)-->
-    <div id="container" class="container" style="">
+    <div id="container" class="container">
     </div>
 
     <!--Favorite or Recent Movie Content (4 Card Display)-->
@@ -362,35 +341,27 @@
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="static/js/jquery.js"></script>
-    <script src="static/js/jquery.min.js"></script>
+    <!-- SCRIPTS -->
     <script src="static/js/jquery-3.2.1.slim.min.js"></script>
-    <script>window.jQuery || document.write('<script src="static/js/jquery-slim.min.js"><\/script>')</script>
     <script src="static/js/popper.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
-    <script src="static/js/holder.min.js"></script>
+    <script src="static/js/main-content.js"></script>
     <script src="static/js/content.js"></script>
 
     <script>
-        //	rel_url="C:/Users/ABHI's_IDEAPAD";
-
-        rel_url = "F:/Applications Data"
         function searchMovies(event) {
-            var k = event.keyCode;
+            let k = event.keyCode;
             console.log(k);
-            var text = document.getElementById("searchText").value;
+            let text = document.getElementById("searchText").value;
             console.log("Search For: " + text + " | ----------------------------");
             document.getElementById("searchList").innerHTML = "";
-            var listItems = "";
+            let listItems = "";
 
             if ((k >= 65 && k <= 90) || (k >= 48 && k <= 57) || (k >= 96 && k <= 105) || k == 219 || k == 221) {//work only for [a-z0-9]
-                for (var i = 0; i < movieContent.length; i++) {
-                    var movie = movieContent[i].title.toLowerCase();
+                for (let i = 0; i < movieContent.length; i++) {
+                    let movie = movieContent[i].title.toLowerCase();
                     if (k == 219) {
-                        var option = text.substring(text.indexOf("[") - 1, text.indexOf("["));
+                        let option = text.substring(text.indexOf("[") - 1, text.indexOf("["));
                         if (option == "y" || option == "Y") {
                             movie = movieContent[i].year.toString();
                         } else if (option == "c" || option == "C") {
@@ -410,8 +381,8 @@
                 }
                 document.getElementById("searchList").innerHTML = listItems;
             } else if (k == 8) {//re-search on backspace
-                for (var i = 0; i < movieContent.length; i++) {
-                    var movie = movieContent[i].title.toLowerCase();
+                for (let i = 0; i < movieContent.length; i++) {
+                    let movie = movieContent[i].title.toLowerCase();
                     if (movie.indexOf(text.toLowerCase()) >= 0) {
                         //console.log(movieContent[i].title+" ("+movieContent[i].year+")");
                         listItems += '<li><a target="blank" id="searchListItems" href="movie.html?movie=' + movieContent[i].title + ' (' + movieContent[i].year + ')">' + movieContent[i].title + ' (' + movieContent[i].year + ')</a></li>';
@@ -420,8 +391,8 @@
                 document.getElementById("searchList").innerHTML = listItems;
 
             } else if (k == 13) {//for enter
-                for (var i = 0; i < movieContent.length; i++) {
-                    var movie = movieContent[i].title.toLowerCase();
+                for (let i = 0; i < movieContent.length; i++) {
+                    let movie = movieContent[i].title.toLowerCase();
                     if (movie.indexOf(text.toLowerCase()) >= 0) {
                         //console.log(movieContent[i].title+" ("+movieContent[i].year+")");
                         listItems += '<li><a target="blank" id="searchListItems" href="movie.html?movie=' + movieContent[i].title + ' (' + movieContent[i].year + ')">' + movieContent[i].title + ' (' + movieContent[i].year + ')</a></li>';
@@ -437,644 +408,451 @@
             //[ 219
             //] 221
         }
-
     </script>
     <script>
-        Holder.addTheme('thumb', {
-            bg: '#55595c',
-            fg: '#eceeef',
-            text: 'Thumbnail'
-        });
-    </script>
-    <script>
+        let GENRES = ["ACTION", "ADVENTURE", "ANIMATION", "BIOGRAPHY", "COMEDY", "CRIME", "DRAMA", "FAMILY", "FANTASY", "HISTORY", "HORROR", "MYSTERY", "MUSIC", "ROMANCE", "THRILLER", "SCI-FI", "SPORT", "WESTERN" ];
+        let showRestricted = false;
+        let genrePremiers = [], genreAdditions = [];
+        let premiersIndex = 0, additionsIndex = 0;
+        let premiersLimit = 12, additionsLimit = 12;
 
+        $(document).ready(function () {
+            let uri = decodeURI(window.location.href);
+            let genre = "";
+            if (uri.indexOf("?genre=") > 0) {
+                genre = uri.substring(uri.indexOf("?genre=") + 7);
+            }
+            prepareData();
+            displayData(genre);
 
-        var more = 0, newMore = 0;
+            $('[data-toggle="popover"]').popover();
+            $('body').click(function (e) {
+                if (e.target.id != "genrePopover") {
+                    $('[data-toggle="popover"]').popover('hide');
+                }
+            });
+        }
+        );
 
-        function loadPage() {
-            var uri = decodeURI(window.location.href);
-            var genre = "NEW";
-            if (uri.indexOf("?") > 0) { genre = uri.substring(uri.indexOf("?") + 7); }
+        function prepareData() {
+            CONTENT["premiers"] = [];
+            CONTENT["additions"] = [];
+            CONTENT["genres"] = {};
+
+            let genre;
+            for (mid in CONTENT["movies"]) {
+                if (isRestricted(mid) && !showRestricted) {
+                    continue;
+                }
+                CONTENT["premiers"].push(mid);
+                CONTENT["additions"].push(mid);
+                for (g of CONTENT["movies"][mid]["genre"].split(", ")) {
+                    genre = g.toUpperCase();
+                    if (!(genre in CONTENT["genres"])) {
+                        CONTENT["genres"][genre] = [];
+                    }
+                    CONTENT["genres"][genre].push(mid);
+                }
+            }
+            CONTENT["premiers"].sort((a, b) => {
+                if (CONTENT["movies"][a]["year"] > CONTENT["movies"][b]["year"]) {
+                    return -1;
+                } else if (CONTENT["movies"][a]["year"] < CONTENT["movies"][b]["year"]) {
+                    return 1;
+                } else {
+                    if (a > b) {
+                        return -1;
+                    } else if (a < b) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                }
+            });
+            CONTENT["additions"].sort().reverse();
+            CONTENT["favorites"].sort((a, b) => {
+                if (CONTENT["movies"][a]["year"] > CONTENT["movies"][b]["year"]) {
+                    return -1;
+                } else if (CONTENT["movies"][a]["year"] < CONTENT["movies"][b]["year"]) {
+                    return 1;
+                } else {
+                    if (CONTENT["movies"][a]["imdb"] > CONTENT["movies"][b]["imdb"]) {
+                        return -1;
+                    } else if (CONTENT["movies"][a]["imdb"] < CONTENT["movies"][b]["imdb"]) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                }
+            });
+        }
+
+        function prepareGenreData(genre) {
+            genrePremiers = Array.prototype.slice.call(CONTENT["genres"][genre]).sort((a, b) => {
+                if (CONTENT["premiers"].indexOf(a) < CONTENT["premiers"].indexOf(b)) {
+                    return -1;
+                } else if (CONTENT["premiers"].indexOf(a) > CONTENT["premiers"].indexOf(b)) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
+            genreAdditions = Array.prototype.slice.call(CONTENT["genres"][genre]).sort().reverse();
+        }
+
+        function displayData(genre) {
             switch (genre) {
-                case "": loadCarousel();
-                    break;
-                case "NEW": loadCarousel();
-                    break;
                 case "FAVORITE": loadFavorite();
                     break;
-                case "ACTION": loadGenre(genre);
-                    break;
-                case "ADVENTURE": loadGenre(genre);
-                    break;
-                case "ANIMATION": loadGenre(genre);
-                    break;
-                case "BIOGRAPHY": loadGenre(genre);
-                    break;
-                case "COMEDY": loadGenre(genre);
-                    break;
-                case "CRIME": loadGenre(genre);
-                    break;
-                case "DRAMA": loadGenre(genre);
-                    break;
-                case "FAMILY": loadGenre(genre);
-                    break;
-                case "FANTASY": loadGenre(genre);
-                    break;
-                case "HISTORY": loadGenre(genre);
-                    break;
-                case "HORROR": loadGenre(genre);
-                    break;
-                case "MYSTERY": loadGenre(genre);
-                    break;
-                case "MUSIC": loadGenre(genre);
-                    break;
-                case "ROMANCE": loadGenre(genre);
-                    break;
-                case "THRILLER": loadGenre(genre);
-                    break;
-                case "SCI-FI": loadGenre(genre);
-                    break;
-                case "SPORT": loadGenre(genre);
-                    break;
-                case "WESTERN": loadGenre(genre);
-                    break;
-            }
-            document.title = genre + " MOVIES";
-
-
-            $(function () { $('[data-toggle="popover"]').popover(); });
-        }
-
-        function loadCarousel() {
-            var carousel_content = '';
-            for (var a = 0; a < 5; a++) {//for three carousel items
-                switch (a) {
-                    case 0: carousel_content += '<div class="carousel-item active" align="center" style="background-color:transparent"><div class="row">';
-                        break;
-                    case 1: carousel_content += '<div class="carousel-item" align="center" style="background-color:transparent"><div class="row">';
-                        break;
-                    case 2: carousel_content += '<div class="carousel-item" align="center" style="background-color:transparent"><div class="row">';
-                        break;
-                    case 3: carousel_content += '<div class="carousel-item" align="center" style="background-color:transparent"><div class="row">';
-                        break;
-                    case 4: carousel_content += '<div class="carousel-item" align="center" style="background-color:transparent"><div class="row">';
-                        break;
-                }
-
-                var invar = (a + 1) * 5;
-                for (var i = a * 5; i < invar; i++) {
-                    for (var j = 0; j < movieContent.length; j++) {
-                        if (movieContent[j].mid == latestMovies[i]) {
-                            var c = i % 5;
-                            switch (c) {
-                                case 3:
-                                    carousel_content += '<div class="carousel-lend-poster" style=""><a target="blank" href="movie.html?movie=' + movieContent[j].title + ' (' + movieContent[j].year + ')"><img class="extreme-poster" src="static/images/posters/' + movieContent[j].title + ' (' + movieContent[j].year + ').jpg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="' + movieContent[j].title + ' (' + movieContent[j].year + ')"></a></div>';
-                                    break;
-                                case 1:
-                                    carousel_content += '<div class="carousel-lside-poster" style=""><a target="blank" href="movie.html?movie=' + movieContent[j].title + ' (' + movieContent[j].year + ')"><img class="intermediate-poster" src="static/images/posters/' + movieContent[j].title + ' (' + movieContent[j].year + ').jpg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="' + movieContent[j].title + ' (' + movieContent[j].year + ')"></a></div>';
-                                    break;
-                                case 0:
-                                    carousel_content += '<div class="carousel-center-poster" style=""><a target="blank" href="movie.html?movie=' + movieContent[j].title + ' (' + movieContent[j].year + ')"><img class="center-poster" src="static/images/posters/' + movieContent[j].title + ' (' + movieContent[j].year + ').jpg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="' + movieContent[j].title + ' (' + movieContent[j].year + ')"></a></div>';
-                                    break;
-                                case 2:
-                                    carousel_content += '<div class="carousel-rside-poster" style=""><a target="blank" href="movie.html?movie=' + movieContent[j].title + ' (' + movieContent[j].year + ')"><img class="intermediate-poster" src="static/images/posters/' + movieContent[j].title + ' (' + movieContent[j].year + ').jpg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="' + movieContent[j].title + ' (' + movieContent[j].year + ')"></a></div>';
-                                    break;
-                                case 4:
-                                    carousel_content += '<div class="carousel-rend-poster" style=""><a target="blank" href="movie.html?movie=' + movieContent[j].title + ' (' + movieContent[j].year + ')"><img class="extreme-poster" src="static/images/posters/' + movieContent[j].title + ' (' + movieContent[j].year + ').jpg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="' + movieContent[j].title + ' (' + movieContent[j].year + ')"></a></div>';
-                                    break;
-                            }
-                            break;
-                        }
+                default:
+                    if (GENRES.indexOf(genre) > -1) {
+                        loadGenre(genre);
+                    } else {
+                        loadHome();
                     }
-                }
-                carousel_content += '</div></div>';
+                    break;
             }
-            document.getElementById("carousel-holder").innerHTML = carousel_content;
-
-            var container_content = '<div class=" row jumbotron p-3 p-md-5 text-white rounded" style="background:url(static/images/blue-abs.jpg);margin-bottom:30px"><div class="col-md-6 px-0"><h1 class="display-4 font-italic">HOLLYWOOD MOVIE PREMIERS</h1><p class="lead my-3">Action, Adventure, Sci-Fi, Crime...</p><p class="lead mb-0"><a href="#container" class="text-white font-weight-bold">WATCH NOW...</a></p></div><div class="col-md-6"><img id="sortOrder" src="static/images/ic_sort.png" style="float:right" onclick="showSortOrder()" title="Change Sorting Criteria" data-toggle="popover" data-trigger="" data-container="body" data-placement="left" data-html="true" data-content=\'<div class="row"><div class="col-md-6"><span>A-Z</span><span>IMDB Rating</span></div><div class="col-md-6"><input type="checkbox"><input type="checkbox"></div></div>\'></div></div>';
-            container_content += loadContent();
-            container_content += '<nav id="blog-pag" class="blog-pagination" align="center"><a id="pag-btn" class="btn" onclick="loadMore()">Load More</a></nav>';
-
-            document.getElementById("container").innerHTML = container_content;
-
-            loadNew();
         }
 
-        function loadMore() {
-            var container_content = loadContent();
-            if (10 * more <= movieContent.length) {
-                container_content += '<nav id="blog-pag" class="blog-pagination" align="center"><a id="pag-btn" class="btn" onclick="loadMore()">Load More</a></nav>';
+        function loadHome() {
+            $("#carousel-holder").css("display", "block");
+            $(".album.py-5").css("display", "block");
+            premiersIndex = 0;
+            additionsIndex = 0;
+            loadCarousel(CONTENT["premiers"].slice(premiersIndex, 15));
+            loadPremiers("HOLLYWOOD MOVIES PREMIER", CONTENT["premiers"].slice(premiersIndex, premiersIndex + premiersLimit), "");
+            loadAdditions("RECENT ADDITIONS", CONTENT["additions"].slice(additionsIndex, additionsIndex + additionsLimit), "");
+            if (CONTENT["premiers"].length <= premiersLimit) {
+                $("#loadMorePremiersDiv a").css("display", "none");
             }
-
-            $("#blog-pag").replaceWith(container_content);
+            if (CONTENT["additions"].length <= additionsLimit) {
+                $("#loadMoreAdditionsDiv a").css("display", "none");
+            }
+            premiersIndex += premiersLimit;
+            additionsIndex += additionsLimit;
         }
 
-        function loadContent() {
-            var container_content = '';
-            var invar = (more + 1) * 10;
-            for (var i = 10 * more; i < invar && i < movieContent.length; i++) {
-                if (i % 2 == 0) {
-                    container_content += '<div class="row mb-2">';
-                }
-                for (var j = 0; j < movieContent.length; j++) {
-                    if (movieContent[j].mid == latestMovies[i]) {
-                        container_content += '<div class="col-md-6"><div class="card flex-md-row mb-4 box-shadow h-md-280"><div class="card-body d-flex flex-column align-items-start"><strong class="d-inline-block mb-2 text-primary">' + movieContent[j].genre + '</strong><h3 class="mb-0"><a class="text-dark" target="blank" href="movie.html?movie=' + movieContent[j].title + ' (' + movieContent[j].year + ')">' + movieContent[j].title + '</a></h3><div class="mb-1 text-muted">' + movieContent[j].year + ' | IMDB: ';
-                        if (movieContent[j].imdb >= 6.5) {
-                            container_content += '<strong class="text-success">' + movieContent[j].imdb + '</strong></div>';
-                        } else if (movieContent[j].imdb < 5) {
-                            container_content += '<strong class="text-danger">' + movieContent[j].imdb + '</strong></div>';
-                        } else {
-                            container_content += '<strong class="text-muted">' + movieContent[j].imdb + '</strong></div>';
-                        }
-                        if (movieContent[j].rated == "R") {
-                            container_content += '<div class="mb-1 text-danger">' + movieContent[j].rated + '</div>';
-                        } else if (movieContent[j].rated == "M") {
-                            container_content += '<div class="mb-1 text-warning">' + movieContent[j].rated + '</div>';
-                        } else if (movieContent[j].rated == "PG-13" || movieContent[j].rated == "PG" || movieContent[j].rated == "G") {
-                            container_content += '<div class="mb-1 text-info">' + movieContent[j].rated + '</div>';
-                        }
-                        container_content += '<p class="card-text mb-auto"><b class="text-secondary">Cast:</b> ' + movieContent[j].cast + '</p></div><a class="card-img-side" target="blank" href="movie.html?movie=' + movieContent[j].title + ' (' + movieContent[j].year + ')"><img class="card-img-right flex-auto d-md-block" src="static/images/posters/' + movieContent[j].title + ' (' + movieContent[j].year + ').jpg" data-holder-rendered="true"></a></div></div>';
-                    }
-                }
-                if ((i + 1) > movieContent.length) {
-                    container_content += '</div>';
-                } else if (i % 2 != 0) {
-                    container_content += '</div>';
-                }
-            }
+        function loadFavorite() {
+            $("#carousel-holder").css("display", "none");
+            $(".album.py-5").css("display", "none");
 
-            more++;
-            return container_content;
+            $(".navbar-nav li").removeClass("active");
+            $("#nav-favorite").addClass("active");
+
+            premiersIndex = 0;
+
+            loadPremiers("FAVORITE HOLLYWOOD MOVIES", CONTENT["favorites"].slice(premiersIndex, premiersIndex + premiersLimit), "FAVORITE");
+            if (CONTENT["favorite"].length <= premiersLimit) {
+                $("#loadMorePremiersDiv a").css("display", "none");
+            }
+            premiersIndex += premiersLimit;
         }
 
         function loadGenre(genre) {
-            //console.log(genre);
-            more = 0;
+            $("#carousel-holder").css("display", "block");
+            $(".album.py-5").css("display", "block");
+
             $(".navbar-nav li").removeClass("active");
             $("#nav-" + genre.toLowerCase()).addClass("active");
-            var index = 0;
-            for (var x = 0; x < genreMovies.length; x++) {
-                if (genreMovies[x].genre.toUpperCase() == genre) {
-                    index = x;
-                    break;
-                }
-            }
 
-            var carousel_content = '';
-            if (genre != "SPORT" && genre != "WESTERN") {
-                for (var a = 0; a < 3; a++) {//for three carousel items
-                    switch (a) {
-                        case 0: carousel_content += '<div class="carousel-item active" align="center" style="background-color:transparent"><div class="row">';
-                            break;
-                        case 1: carousel_content += '<div class="carousel-item" align="center" style="background-color:transparent"><div class="row">';
-                            break;
-                        case 2: carousel_content += '<div class="carousel-item" align="center" style="background-color:transparent"><div class="row">';
-                            break;
+            prepareGenreData(genre);
+
+            premiersIndex = 0;
+            additionsIndex = 0;
+            loadCarousel(genrePremiers.slice(premiersIndex, 15));
+            loadPremiers(genre + " MOVIES PREMIER", genrePremiers.slice(premiersIndex, premiersIndex + premiersLimit), genre);
+            loadAdditions("RECENT ADDITIONS TO " + genre, genreAdditions.slice(additionsIndex, additionsIndex + additionsLimit), genre);
+            if (genrePremiers.length <= premiersLimit) {
+                $("#loadMorePremiersDiv a").css("display", "none");
+            }
+            if (genreAdditions.length <= additionsLimit) {
+                $("#loadMoreAdditionsDiv a").css("display", "none");
+            }
+            premiersIndex += premiersLimit;
+            additionsIndex += additionsLimit;
+        }
+
+        function loadCarousel(mids) {
+            // 5 Posters per Carousel Page
+            let postersLimit = 5, pages = 0, maxPages = 3;
+            let carousel_content = '';
+            if (mids.length >= postersLimit) {
+                pages = parseInt(mids.length / postersLimit);
+                if (pages > maxPages) {
+                    pages = maxPages;
+                }
+                let activeClass;
+                let carouselClass;
+                let carouselPosterClass;
+                let midIndex = 0;
+                let movie;
+                for (let a = 0; a < pages; a++) {
+                    activeClass = '';
+                    if (a == 0) {
+                        activeClass = "active";
                     }
-                    var invar = (a + 1) * 5;//loop invariant
-                    for (var i = a * 5; i < invar; i++) {
-                        for (var j = 0; j < movieContent.length; j++) {
-                            if (movieContent[j].mid == genreMovies[index].mids[i]) {
-                                var c = i % 5;
-                                switch (c) {
-                                    case 3:
-                                        carousel_content += '<div class="carousel-lend-poster" style=""><a target="blank" href="movie.html?movie=' + movieContent[j].title + ' (' + movieContent[j].year + ')"><img class="extreme-poster" src="static/images/posters/' + movieContent[j].title + ' (' + movieContent[j].year + ').jpg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="' + movieContent[j].title + ' (' + movieContent[j].year + ')"></a></div>';
-                                        break;
-                                    case 1:
-                                        carousel_content += '<div class="carousel-lside-poster" style=""><a target="blank" href="movie.html?movie=' + movieContent[j].title + ' (' + movieContent[j].year + ')"><img class="intermediate-poster" src="static/images/posters/' + movieContent[j].title + ' (' + movieContent[j].year + ').jpg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="' + movieContent[j].title + ' (' + movieContent[j].year + ')"></a></div>';
-                                        break;
-                                    case 0:
-                                        carousel_content += '<div class="carousel-center-poster" style=""><a target="blank" href="movie.html?movie=' + movieContent[j].title + ' (' + movieContent[j].year + ')"><img class="center-poster" src="static/images/posters/' + movieContent[j].title + ' (' + movieContent[j].year + ').jpg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="' + movieContent[j].title + ' (' + movieContent[j].year + ')"></a></div>';
-                                        break;
-                                    case 2:
-                                        carousel_content += '<div class="carousel-rside-poster" style=""><a target="blank" href="movie.html?movie=' + movieContent[j].title + ' (' + movieContent[j].year + ')"><img class="intermediate-poster" src="static/images/posters/' + movieContent[j].title + ' (' + movieContent[j].year + ').jpg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="' + movieContent[j].title + ' (' + movieContent[j].year + ')"></a></div>';
-                                        break;
-                                    case 4:
-                                        carousel_content += '<div class="carousel-rend-poster" style=""><a target="blank" href="movie.html?movie=' + movieContent[j].title + ' (' + movieContent[j].year + ')"><img class="extreme-poster" src="static/images/posters/' + movieContent[j].title + ' (' + movieContent[j].year + ').jpg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="' + movieContent[j].title + ' (' + movieContent[j].year + ')"></a></div>';
-                                        break;
-                                }
-                            }
+                    carousel_content += '<div class="carousel-item ' + activeClass + '" align="center" style="background-color:transparent"><div class="row">';
+
+                    for (let i = 0; i < postersLimit; i++) {
+                        movie = CONTENT["movies"][mids[midIndex]];
+                        midIndex += 1;
+                        switch (i) {
+                            case 3:
+                                carouselClass = "carousel-lend-poster";
+                                carouselPosterClass = "extreme-poster";
+                                break;
+                            case 1:
+                                carouselClass = "carousel-lside-poster";
+                                carouselPosterClass = "intermediate-poster";
+                                break;
+                            case 0:
+                                carouselClass = "carousel-center-poster";
+                                carouselPosterClass = "center-poster";
+                                break;
+                            case 2:
+                                carouselClass = "carousel-rside-poster";
+                                carouselPosterClass = "intermediate-poster";
+                                break;
+                            case 4:
+                                carouselClass = "carousel-rend-poster";
+                                carouselPosterClass = "extreme-poster";
+                                break;
                         }
+                        carousel_content +=
+                            '<div class="' + carouselClass + '"> \
+                                            <a target="blank" href="movie.html?movie=' + movie.title + ' (' + movie.year + ')"> \
+                                                <img class="'+ carouselPosterClass + '" src="static/images/posters/' + movie.title + ' (' + movie.year + ').jpg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="' + movie.title + ' (' + movie.year + ')"> \
+                                            </a> \
+                                        </div>';
                     }
                     carousel_content += '</div></div>';
                 }
             }
-            document.getElementById("carousel-holder").innerHTML = carousel_content;
-            var jumboGenreTitle = '';
-            var jumboGenreContent = '';
-            var jumboGenreLink = 'WATCH NOW...';
-            switch (genre) {
-                case "ACTION":
-                    jumboGenreTitle = genre + ' MOVIES';
-                    jumboGenreContent = '';
-                    jumboGenreLink = 'WATCH NOW...';
-                    break;
-                case "ADVENTURE":
-                    jumboGenreTitle = genre + ' MOVIES';
-                    jumboGenreContent = '';
-                    jumboGenreLink = 'WATCH NOW...';
-                    break;
-                case "ANIMATION":
-                    jumboGenreTitle = genre + ' MOVIES';
-                    jumboGenreContent = '';
-                    jumboGenreLink = 'WATCH NOW...';
-                    break;
-                case "BIOGRAPHY":
-                    jumboGenreTitle = genre + ' MOVIES';
-                    jumboGenreContent = '';
-                    jumboGenreLink = 'WATCH NOW...';
-                    break;
-                case "COMEDY":
-                    jumboGenreTitle = genre + ' MOVIES';
-                    jumboGenreContent = '';
-                    jumboGenreLink = 'WATCH NOW...';
-                    break;
-                case "CRIME":
-                    jumboGenreTitle = genre + ' MOVIES';
-                    jumboGenreContent = '';
-                    jumboGenreLink = 'WATCH NOW...';
-                    break;
-                case "DRAMA":
-                    jumboGenreTitle = genre + ' MOVIES';
-                    jumboGenreContent = '';
-                    jumboGenreLink = 'WATCH NOW...';
-                    break;
-                case "FAMILY":
-                    jumboGenreTitle = genre + ' MOVIES';
-                    jumboGenreContent = '';
-                    jumboGenreLink = 'WATCH NOW...';
-                    break;
-                case "FANTASY":
-                    jumboGenreTitle = genre + ' MOVIES';
-                    jumboGenreContent = '';
-                    jumboGenreLink = 'WATCH NOW...';
-                    break;
-                case "HISTORY":
-                    jumboGenreTitle = genre + ' MOVIES';
-                    jumboGenreContent = '';
-                    jumboGenreLink = 'WATCH NOW...';
-                    break;
-                case "HORROR":
-                    jumboGenreTitle = genre + ' MOVIES';
-                    jumboGenreContent = '';
-                    jumboGenreLink = 'WATCH NOW...';
-                    break;
-                case "MYSTERY":
-                    jumboGenreTitle = genre + ' MOVIES';
-                    jumboGenreContent = '';
-                    jumboGenreLink = 'WATCH NOW...';
-                    break;
-                case "MUSIC":
-                    jumboGenreTitle = genre + ' MOVIES';
-                    jumboGenreContent = '';
-                    jumboGenreLink = 'WATCH NOW...';
-                    break;
-                case "ROMANCE":
-                    jumboGenreTitle = genre + ' MOVIES';
-                    jumboGenreContent = '';
-                    jumboGenreLink = 'WATCH NOW...';
-                    break;
-                case "THRILLER":
-                    jumboGenreTitle = genre + ' MOVIES';
-                    jumboGenreContent = '';
-                    jumboGenreLink = 'WATCH NOW...';
-                    break;
-                case "SCI-FI":
-                    jumboGenreTitle = genre + ' MOVIES';
-                    jumboGenreContent = '';
-                    jumboGenreLink = 'WATCH NOW...';
-                    break;
-                case "SPORT":
-                    jumboGenreTitle = genre + ' MOVIES';
-                    jumboGenreContent = '';
-                    jumboGenreLink = 'WATCH NOW...';
-                    break;
-                case "WESTERN":
-                    jumboGenreTitle = genre + ' MOVIES';
-                    jumboGenreContent = '';
-                    jumboGenreLink = 'WATCH NOW...';
-                    break;
+            if (carousel_content == "") {
+                $("#carousel-holder").css("display", "none");
+            } else {
+                document.getElementById("carousel-holder").innerHTML = carousel_content;
             }
-            var container_content = '<div class="jumbotron p-3 p-md-5 text-white rounded" style="background:url(static/images/blue-abs.jpg);margin-bottom:30px"><div class="col-md-6 px-0"><h1 class="display-4 font-italic">' + jumboGenreTitle + '</h1><p class="lead my-3">' + jumboGenreContent + '</p><p class="lead mb-0"><a href="#container" class="text-white font-weight-bold">' + jumboGenreLink + '</a></p></div></div>';
+        }
 
-            container_content += loadGenreContent(genre);
+        function loadPremiers(title, mids, type) {
+            let container_content =
+                '<div class="row jumbotron p-3 p-md-5 text-white rounded" style="background:url(static/images/blue-abs.jpg);margin-bottom:30px"> \
+                <div class="col-md-6 px-0"> \
+                    <h1 class="display-4 font-italic">'+ title + '</h1> \
+                    <p class="lead mb-0"> \
+                        <a href="#container" class="text-white font-weight-bold">WATCH NOW...</a> \
+                    </p> \
+                </div> \
+                <div class="col-md-6"> \
+                    <img id="sortOrder" src="static/images/ic_sort.png" style="cursor:pointer;float:right" title="Filter" data-toggle="popover" data-trigger="" data-container="body" data-placement="left" data-html="true" data-content=\'<div class="row"><div class="col-md-6"><span>A-Z</span><span>IMDB Rating</span></div><div class="col-md-6"><input type="checkbox"><input type="checkbox"></div></div>\'> \
+                </div> \
+            </div>';
 
-            if (10 * more <= genreMovies[index].mids.length) {
-                container_content += '<nav id="blog-pag" class="blog-pagination" align="center"><a id="pag-btn" class="btn" onclick="loadGenreMore(\'' + genre + '\')">Load More</a></nav>';
-            }
+            container_content += loadPremiersContent(mids);
+
+            container_content +=
+                '<nav id="loadMorePremiersDiv" class="blog-pagination" align="center"> \
+                    <a id="pag-btn" class="btn" onclick="loadMorePremiers(\''+ type + '\')">Load More</a> \
+                </nav>';
+
             document.getElementById("container").innerHTML = container_content;
 
-            loadGenreNew(genre);
         }
 
-        function loadGenreMore(genre) {
-            var index = 0;
-            for (var x = 0; x < genreMovies.length; x++) {
-                if (genreMovies[x].genre.toUpperCase() == genre) {
-                    index = x;
-                    break;
-                }
-            }
-            var container_content = loadGenreContent(genre);
-            if (10 * more <= genreMovies[index].mids.length) {
-                container_content += '<nav id="blog-pag" class="blog-pagination" align="center"><a id="pag-btn" class="btn" onclick="loadGenreMore(\'' + genre + '\')">Load More</a></nav>';
-            }
+        function loadAdditions(title, mids, type) {
+            let container_content =
+                '<div class="jumbotron p-3 p-md-5 text-white rounded" style="background:url(static/images/yellow-band.jpg);margin-bottom:30px"> \
+                    <div class="col-md-6 px-0"> \
+                        <h1 class="display-4 font-italic">'+ title + '</h1> \
+                    </div> \
+                </div>';
 
-            $("#blog-pag").replaceWith(container_content);
+            container_content += loadAdditionsContent(mids);
+
+            container_content +=
+                '<nav id="loadMoreAdditionsDiv" class="blog-pagination" align="center"> \
+                    <a id="pag-btn" class="btn" onclick="loadMoreAdditions(\''+ type + '\')">Load More</a> \
+                </nav>';
+
+            document.getElementById("newContainer").innerHTML = container_content;
 
         }
 
-        function loadGenreContent(genre) {
-            var index = 0;
-            for (var x = 0; x < genreMovies.length; x++) {
-                if (genreMovies[x].genre.toUpperCase() == genre) {
-                    index = x;
-                    break;
-                }
-            }
-            var container_content = '';
-            var invar = (more + 1) * 10;
-            for (var i = 10 * more; i < invar && i < genreMovies[index].mids.length; i++) {
+        function loadPremiersContent(mids) {
+            // 2 Movies per Row
+            let container_content = '';
+            let movie;
+            let imdbClass, ratingClass;
+            let i = 0;
+            for (; i < mids.length; i++) {
+                movie = CONTENT["movies"][mids[i]];
                 if (i % 2 == 0) {
                     container_content += '<div class="row mb-2">';
                 }
+                container_content +=
+                    '<div class="col-md-6"> \
+                                <div class="card flex-md-row mb-4 box-shadow h-md-280"> \
+                                    <div class="card-body d-flex flex-column align-items-start"> \
+                                        <strong class="d-inline-block mb-2 text-primary">' + movie.genre + '</strong> \
+                                        <h3 class="mb-0"> \
+                                            <a class="text-dark" target="blank" href="movie.html?movie=' + movie.title + ' (' + movie.year + ')">' + movie.title + '</a> \
+                                        </h3> \
+                                    <div class="mb-1 text-muted">' + movie.year + ' | IMDB: ';
 
-                for (var j = 0; j < movieContent.length; j++) {
-                    if (movieContent[j].mid == genreMovies[index].mids[i]) {
-                        container_content += '<div class="col-md-6"><div class="card flex-md-row mb-4 box-shadow h-md-280"><div class="card-body d-flex flex-column align-items-start"><strong class="d-inline-block mb-2 text-primary">' + movieContent[j].genre + '</strong><h3 class="mb-0"><a class="text-dark" target="blank" href="movie.html?movie=' + movieContent[j].title + ' (' + movieContent[j].year + ')">' + movieContent[j].title + '</a></h3><div class="mb-1 text-muted">' + movieContent[j].year + ' | IMDB: ';
-                        if (movieContent[j].imdb >= 6.5) {
-                            container_content += '<strong class="text-success">' + movieContent[j].imdb + '</strong></div>';
-                        } else if (movieContent[j].imdb < 5) {
-                            container_content += '<strong class="text-danger">' + movieContent[j].imdb + '</strong></div>';
-                        } else {
-                            container_content += '<strong class="text-muted">' + movieContent[j].imdb + '</strong></div>';
-                        }
-                        if (movieContent[j].rated == "R") {
-                            container_content += '<div class="mb-1 text-danger">' + movieContent[j].rated + '</div>';
-                        } else if (movieContent[j].rated == "M") {
-                            container_content += '<div class="mb-1 text-warning">' + movieContent[j].rated + '</div>';
-                        } else if (movieContent[j].rated == "PG-13" || movieContent[j].rated == "PG" || movieContent[j].rated == "G") {
-                            container_content += '<div class="mb-1 text-info">' + movieContent[j].rated + '</div>';
-                        }
-                        container_content += '<p class="card-text mb-auto"><b class="text-secondary">Cast:</b> ' + movieContent[j].cast + '</p></div><a class="card-img-side" target="blank" href="movie.html?movie=' + movieContent[j].title + ' (' + movieContent[j].year + ')"><img class="card-img-right flex-auto d-md-block" src="static/images/posters/' + movieContent[j].title + ' (' + movieContent[j].year + ').jpg" data-holder-rendered="true"></a></div></div>';
-                    }
+                imdbClass = "text-muted";
+                if (movie.imdb >= 6.5) {
+                    imdbClass = "text-success";
+                } else if (movie.imdb < 5) {
+                    imdbClass = "text-danger";
                 }
-                if ((i + 1) > genreMovies[index].mids.length) {
-                    container_content += '</div>';
-                } else if (i % 2 != 0) {
+                container_content += '<strong class="' + imdbClass + '">' + movie.imdb + '</strong></div>';
+
+                ratingClass = "text-info";
+                if (movie.rated == "R") {
+                    ratingClass = "text-danger";
+                } else if (movie.rated == "M") {
+                    ratingClass = "text-warning";
+                }
+                container_content += '<div class="mb-1 ' + ratingClass + '">' + movie.rated + '</div>';
+
+                container_content +=
+                    '<p class="card-text mb-auto"> \
+                                <b class="text-secondary">Cast:</b> ' + movie.cast + ' \
+                            </p></div> \
+                            <a class="card-img-side" target="blank" href="movie.html?movie=' + movie.title + ' (' + movie.year + ')"> \
+                                <img class="card-img-right flex-auto d-md-block" src="static/images/posters/' + movie.title + ' (' + movie.year + ').jpg" data-holder-rendered="true"> \
+                            </a> \
+                            </div></div>';
+
+
+                if (i % 2 != 0) {
                     container_content += '</div>';
                 }
             }
-
-            more++;
+            if (i % 2 != 0) {
+                container_content += '</div>';
+            }
+            
             return container_content;
-
         }
 
-        function loadNew() {
-            newMore = 0;
-            var container_content = '<div class="jumbotron p-3 p-md-5 text-white rounded" style="background:url(static/images/yellow-band.jpg);margin-bottom:30px"><div class="col-md-6 px-0"><h1 class="display-4 font-italic">NEW MOVIES</h1></div></div>';
-
-            container_content += loadNewContent();
-
-
-            container_content += '<nav id="card-pag" class="blog-pagination" align="center"><a id="pag-btn" class="btn" onclick="loadNewMore()">Load More</a></nav>';
-
-            document.getElementById("newContainer").innerHTML = container_content;
-
-        }
-
-        function loadNewMore() {
-            var container_content = loadNewContent();
-            if (16 * more <= movieContent.length) {
-                container_content += '<nav id="card-pag" class="blog-pagination" align="center"><a id="pag-btn" class="btn" onclick="loadNewMore()">Load More</a></nav>';
-            }
-
-            $("#card-pag").replaceWith(container_content);
-
-        }
-
-        function loadNewContent() {
-
-            var container_content = '';
-            var invar = (newMore + 1) * 16;
-            for (var i = 16 * newMore; i < invar && i < movieContent.length; i++) {
+        function loadAdditionsContent(mids) {
+            // 4 Movies per Row
+            let container_content = '';
+            let movie;
+            let favoriteClass, ratingClass, imdbClass;
+            let i = 0;
+            for (; i < mids.length; i++) {
+                movie = CONTENT["movies"][mids[i]];
                 if (i % 4 == 0) {
                     container_content += '<div class="row">';
                 }
-                for (var j = 0; j < movieContent.length; j++) {
-                    if (movieContent[j].mid == newMovies[i]) {
-                        container_content += '<div class="col-md-3"><div class="card mb-4 box-shadow"><a target="blank" href="movie.html?movie=' + movieContent[j].title + ' (' + movieContent[j].year + ')"><img class="card-img-top" src="static/images/posters/' + movieContent[j].title + ' (' + movieContent[j].year + ').jpg" data-holder-rendered="true" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="' + movieContent[j].title + ' (' + movieContent[j].year + ')"></a><div class="card-body"><p class="card-text">Year: ' + movieContent[j].year + '<br/>Genre: ' + movieContent[j].genre + '<br/><strong class="text-muted">Cast:</strong> ' + movieContent[j].cast + '</p><div class="d-flex justify-content-between align-items-center"><div class="btn-group">';
-                        if (isFavorite(newMovies[i])) {
-                            container_content += '<button type="button" class="btn btn-sm btn-outline-danger" disabled>Favorite</button>';
-                        } else {
-                            container_content += '<button type="button" class="btn btn-sm btn-outline-secondary" disabled>Favorite</button>';
-                        }
 
-                        if (movieContent[j].rated == "R") {
-                            container_content += '<button type="button" class="btn btn-sm btn-outline-danger" disabled>' + movieContent[j].rated + '</button></div>';
-                        } else if (movieContent[j].rated == "M") {
-                            container_content += '<button type="button" class="btn btn-sm btn-outline-warning" disabled>' + movieContent[j].rated + '</button></div>';
-                        } else if (movieContent[j].rated == "PG-13" || movieContent[j].rated == "PG" || movieContent[j].rated == "G") {
-                            container_content += '<button type="button" class="btn btn-sm btn-outline-info" disabled>' + movieContent[j].rated + '</button></div>';
-                        }
-                        container_content += '<small class="text-muted">IMDB: ';
-                        if (movieContent[j].imdb >= 6.5) {
-                            container_content += '<strong class="text-success">' + movieContent[j].imdb + '</strong>';
-                        } else if (movieContent[j].imdb < 5) {
-                            container_content += '<strong class="text-danger">' + movieContent[j].imdb + '</strong>';
-                        } else {
-                            container_content += '<strong class="text-muted">' + movieContent[j].imdb + '</strong>';
-                        }
-                        container_content += '</small></div></div></div></div>';
-
-                    }
+                container_content +=
+                    '<div class="col-md-3"> \
+                        <div class="card mb-4 box-shadow"> \
+                            <a target="blank" href="movie.html?movie=' + movie.title + ' (' + movie.year + ')"> \
+                                <img class="card-img-top" src="static/images/posters/' + movie.title + ' (' + movie.year + ').jpg" data-holder-rendered="true" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="' + movie.title + ' (' + movie.year + ')"> \
+                            </a> \
+                            <div class="card-body"> \
+                                <p class="card-text">Year: ' + movie.year + '<br/>Genre: ' + movie.genre + '<br/><strong class="text-muted">Cast:</strong> ' + movie.cast + ' \
+                                </p> \
+                                <div class="d-flex justify-content-between align-items-center"> \
+                                    <div class="btn-group">';
+                favoriteClass = "btn-outline-secondary";
+                if (isFavorite(mids[i])) {
+                    favoriteClass = "btn-outline-danger";
                 }
-                if ((i + 1) > movieContent.length) {
-                    container_content += '</div>';
-                } else if (i % 4 == 3) {
+                container_content += '<button type="button" class="btn btn-sm ' + favoriteClass + '" disabled>Favorite</button>';
+
+                ratingClass = "btn-outline-info";
+                if (movie.rated == "R") {
+                    ratingClass = "btn-outline-danger";
+                } else if (movie.rated == "M") {
+                    ratingClass = "btn-outline-warning";
+                }
+                container_content += '<button type="button" class="btn btn-sm ' + ratingClass + '" disabled>' + movie.rated + '</button></div>';
+
+                imdbClass = "text-muted";
+                if (movie.imdb >= 6.5) {
+                    imdbClass = "text-success";
+                } else if (movie.imdb < 5) {
+                    imdbClass = "text-danger";
+                }
+                container_content += '<small class="text-muted">IMDB: \
+                    <strong class="'+ imdbClass + '">' + movie.imdb + '</strong> \
+                    </small> \
+                    </div></div></div></div>';
+
+                if (i % 4 == 3) {
                     container_content += '</div>';
                 }
             }
-
-            newMore++;
-
-            $(function () { $('[data-toggle="popover"]').popover(); });
+            if (i % 4 !== 0) {
+                container_content += '</div>';
+            }
 
             return container_content;
-
         }
 
-        function loadGenreNew(genre) {
-            newMore = 0;
-            var index = 0;
-            for (var x = 0; x < genreMovies.length; x++) {
-                if (genreMovies[x].genre.toUpperCase() == genre) {
-                    index = x;
-                    break;
+        function loadMorePremiers(type) {
+            let moreContent = '';
+            let endIndex = premiersIndex + premiersLimit;
+            if (type == "FAVORITE") {
+                moreContent = loadPremiersContent(CONTENT["favorites"].slice(premiersIndex, endIndex));
+                if (endIndex >= CONTENT["favorites"].length) {
+                    $("#loadMorePremiersDiv a").css("display", "none");
+                }
+            } else if (GENRES.indexOf(type) > -1) {
+                moreContent = loadPremiersContent(genrePremiers.slice(premiersIndex, endIndex));
+                if (endIndex >= genrePremiers.length) {
+                    $("#loadMorePremiersDiv a").css("display", "none");
+                }
+            } else {
+                moreContent = loadPremiersContent(CONTENT["premiers"].slice(premiersIndex, endIndex));
+                if (endIndex >= CONTENT["premiers"].length) {
+                    $("#loadMorePremiersDiv a").css("display", "none");
                 }
             }
-            var container_content = '<div class="jumbotron p-3 p-md-5 text-white rounded" style="background:url(static/images/yellow-band.jpg);margin-bottom:30px"><div class="col-md-6 px-0"><h1 class="display-4 font-italic">NEW ' + genre + ' MOVIES</h1></div></div>';
 
-            container_content += loadGenreNewContent(genre);
-
-
-            if (16 * more <= genreMovies[index].mids.length) {
-                container_content += '<nav id="card-pag" class="blog-pagination" align="center"><a id="pag-btn" class="btn" onclick=loadGenreNewMore("' + genre + '")>Load More</a></nav>';
-            }
-
-            document.getElementById("newContainer").innerHTML = container_content;
-
+            $(moreContent).insertBefore("#loadMorePremiersDiv");
+            premiersIndex = endIndex;
         }
 
-        function loadGenreNewMore(genre) {
-            var index = 0;
-            for (var x = 0; x < genreMovies.length; x++) {
-                if (genreMovies[x].genre.toUpperCase() == genre) {
-                    index = x;
-                    break;
+        function loadMoreAdditions(type) {
+            let moreContent = '';
+            let endIndex = additionsIndex + additionsLimit;
+
+            if (GENRES.indexOf(type) > -1) {
+                moreContent = loadAdditionsContent(genreAdditions.slice(additionsIndex, endIndex));
+                if (endIndex >= genreAdditions.length) {
+                    $("#loadMoreAdditionsDiv a").css("display", "none");
                 }
-            }
-            var container_content = loadGenreNewContent(genre);
-            if (16 * more <= genreMovies[index].mids.length) {
-                container_content += '<nav id="card-pag" class="blog-pagination" align="center"><a id="pag-btn" class="btn" onclick=loadGenreNewMore("' + genre + '")>Load More</a></nav>';
-            }
-
-            $("#card-pag").replaceWith(container_content);
-
-        }
-
-        function loadGenreNewContent(genre) {
-            var index = 0;
-            for (var x = 0; x < genreMovies.length; x++) {
-                if (genreMovies[x].genre.toUpperCase() == genre) {
-                    index = x;
-                    break;
-                }
-            }
-            var newGenreMovies = genreMovies[index].mids;
-            newGenreMovies.sort();
-            newGenreMovies.reverse();
-
-            var container_content = '';
-            var invar = (newMore + 1) * 16;
-            for (var i = 16 * newMore; i < invar && i < genreMovies[index].mids.length; i++) {
-                if (i % 4 == 0) {
-                    container_content += '<div class="row">';
-                }
-                for (var j = 0; j < movieContent.length; j++) {
-                    if (movieContent[j].mid == newGenreMovies[i]) {
-                        container_content += '<div class="col-md-3"><div class="card mb-4 box-shadow"><a target="blank" href="movie.html?movie=' + movieContent[j].title + ' (' + movieContent[j].year + ')"><img class="card-img-top" style="height: 330px; width: 100%; display: block;" src="static/images/posters/' + movieContent[j].title + ' (' + movieContent[j].year + ').jpg" data-holder-rendered="true" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="' + movieContent[j].title + ' (' + movieContent[j].year + ')"></a><div class="card-body"><p class="card-text">Year: ' + movieContent[j].year + '<br/>Genre: ' + movieContent[j].genre + '<br/><strong class="text-muted">Cast:</strong> ' + movieContent[j].cast + '</p><div class="d-flex justify-content-between align-items-center"><div class="btn-group">';
-                        if (isFavorite(newGenreMovies[i])) {
-                            container_content += '<button type="button" class="btn btn-sm btn-outline-danger" disabled>Favorite</button>';
-                        } else {
-                            container_content += '<button type="button" class="btn btn-sm btn-outline-secondary" disabled>Favorite</button>';
-                        }
-
-                        if (movieContent[j].rated == "R") {
-                            container_content += '<button type="button" class="btn btn-sm btn-outline-danger" disabled>' + movieContent[j].rated + '</button></div>';
-                        } else if (movieContent[j].rated == "M") {
-                            container_content += '<button type="button" class="btn btn-sm btn-outline-warning" disabled>' + movieContent[j].rated + '</button></div>';
-                        } else if (movieContent[j].rated == "PG-13" || movieContent[j].rated == "PG" || movieContent[j].rated == "G") {
-                            container_content += '<button type="button" class="btn btn-sm btn-outline-info" disabled>' + movieContent[j].rated + '</button></div>';
-                        }
-                        container_content += '<small class="text-muted">IMDB: ';
-                        if (movieContent[j].imdb >= 6.5) {
-                            container_content += '<strong class="text-success">' + movieContent[j].imdb + '</strong>';
-                        } else if (movieContent[j].imdb < 5) {
-                            container_content += '<strong class="text-danger">' + movieContent[j].imdb + '</strong>';
-                        } else {
-                            container_content += '<strong class="text-muted">' + movieContent[j].imdb + '</strong>';
-                        }
-                        container_content += '</small></div></div></div></div>';
-
-                    }
-                }
-                if ((i + 1) > genreMovies[index].mids.length) {
-                    container_content += '</div>';
-                } else if (i % 4 == 3) {
-                    container_content += '</div>';
+            } else {
+                moreContent = loadAdditionsContent(CONTENT["additions"].slice(additionsIndex, endIndex));
+                if (endIndex >= CONTENT["additions"].length) {
+                    $("#loadMoreAdditionsDiv a").css("display", "none");
                 }
             }
 
-            newMore++;
-
-            $(function () { $('[data-toggle="popover"]').popover(); });
-
-            return container_content;
-
+            $(moreContent).insertBefore("#loadMoreAdditionsDiv");
+            additionsIndex = endIndex;
         }
 
         function isFavorite(mid) {
-            for (var i = 0; i < favoriteMovies.length; i++) {
-                if (favoriteMovies[i] == mid) {
-                    return true;
-                }
+            if (CONTENT["favorites"].indexOf(mid) > -1) {
+                return true;
             }
             return false;
         }
 
-        function loadFavorite() {
-            more = 0;
-            $(".navbar-nav li").removeClass("active");
-            $("#nav-favorite").addClass("active");
-
-            var container_content = '<div class="jumbotron p-3 p-md-5 text-white rounded" style="background:url(static/images/blue-abs.jpg);margin-bottom:30px"><div class="col-md-6 px-0"><h1 class="display-4 font-italic">FAVORITE MOVIES COLLECTION</h1><p class="lead my-3">Action, Adventure, Animation, Comedy, Drama, Sci-Fi...</p><p class="lead mb-0"><a href="#container" class="text-white font-weight-bold">WATCH NOW...</a></p></div></div>';
-            container_content += loadFavoriteContent();
-            container_content += '<nav id="blog-pag" class="blog-pagination" align="center"><a id="pag-btn" class="btn" onclick="loadFavoriteMore()">Load More</a></nav>';
-
-            document.getElementById("carousel-holder").innerHTML = '';
-            document.getElementById("container").innerHTML = container_content;
-            document.getElementById("newContainer").innerHTML = '';
-        }
-
-        function loadFavoriteMore() {
-            var container_content = loadFavoriteContent();
-            if (20 * more <= favoriteMovies.length) {
-                container_content += '<nav id="blog-pag" class="blog-pagination" align="center"><a id="pag-btn" class="btn" onclick="loadFavoriteMore()">Load More</a></nav>';
+        function isRestricted(mid) {
+            if (CONTENT["restricted"].indexOf(mid) > -1) {
+                return true;
             }
-
-            $("#blog-pag").replaceWith(container_content);
+            return false;
         }
-
-        function loadFavoriteContent() {
-            var container_content = '';
-            var invar = (more + 1) * 20;
-            for (var i = 20 * more; i < invar && i < favoriteMovies.length; i++) {
-                if (i % 2 == 0) {
-                    container_content += '<div class="row mb-2">';
-                }
-                for (var j = 0; j < movieContent.length; j++) {
-                    if (movieContent[j].mid == favoriteMovies[i]) {
-                        container_content += '<div class="col-md-6"><div class="card flex-md-row mb-4 box-shadow h-md-280"><div class="card-body d-flex flex-column align-items-start"><strong class="d-inline-block mb-2 text-primary">' + movieContent[j].genre + '</strong><h3 class="mb-0"><a class="text-dark" target="blank" href="movie.html?movie=' + movieContent[j].title + ' (' + movieContent[j].year + ')">' + movieContent[j].title + '</a></h3><div class="mb-1 text-muted">' + movieContent[j].year + ' | IMDB: ';
-                        if (movieContent[j].imdb >= 6.5) {
-                            container_content += '<strong class="text-success">' + movieContent[j].imdb + '</strong></div>';
-                        } else if (movieContent[j].imdb < 5) {
-                            container_content += '<strong class="text-danger">' + movieContent[j].imdb + '</strong></div>';
-                        } else {
-                            container_content += '<strong class="text-muted">' + movieContent[j].imdb + '</strong></div>';
-                        }
-                        if (movieContent[j].rated == "R") {
-                            container_content += '<div class="mb-1 text-danger">' + movieContent[j].rated + '</div>';
-                        } else if (movieContent[j].rated == "M") {
-                            container_content += '<div class="mb-1 text-warning">' + movieContent[j].rated + '</div>';
-                        } else if (movieContent[j].rated == "PG-13" || movieContent[j].rated == "PG" || movieContent[j].rated == "G") {
-                            container_content += '<div class="mb-1 text-info">' + movieContent[j].rated + '</div>';
-                        }
-                        container_content += '<p class="card-text mb-auto"><b class="text-secondary">Cast:</b> ' + movieContent[j].cast + '</p></div><a target="blank" href="movie.html?movie=' + movieContent[j].title + ' (' + movieContent[j].year + ')"><img class="card-img-right flex-auto d-md-block" src="static/images/posters/' + movieContent[j].title + ' (' + movieContent[j].year + ').jpg" data-holder-rendered="true"></a></div></div>';
-                    }
-                }
-                if ((i + 1) > favoriteMovies.length) {
-                    container_content += '</div>';
-                } else if (i % 2 != 0) {
-                    container_content += '</div>';
-                }
-            }
-
-            more++;
-            return container_content;
-        }
-
 
         function showSortOrder() {
             $('#sortOrder').popover('show');
@@ -1083,13 +861,6 @@
         function showSearchModal() {
             $("#searchModal").modal();
         }
-
-        $('body').click(function (e) {
-            if (e.target.id != "genrePopover") {
-                $('[data-toggle="popover"]').popover('hide');
-            }
-        });
-
 
     </script>
 
